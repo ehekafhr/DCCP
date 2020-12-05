@@ -1,6 +1,6 @@
 #include "interpreter.h"
 
-
+// testing
 void removeSpace(string& str) {
     // remove all space character from string.
 
