@@ -1,47 +1,47 @@
 #include "Note.h"
 
 
-// ¹®ÀÚ¿­·Î ¹ÞÀº °èÀÌ¸§°ú ¹ÚÀÚ¸¦ ÁÖÆÄ¼ö¿Í ¹Ð¸®ÃÊ ´ÜÀ§ ±æÀÌ·Î È¯»êÇÏ¿© ³ëÆ® °´Ã¼¸¦ »ý¼ºÇÑ´Ù.
+// ë¬¸ìžì—´ë¡œ ë°›ì€ ê³„ì´ë¦„ê³¼ ë°•ìžë¥¼ ì£¼íŒŒìˆ˜ì™€ ë°€ë¦¬ì´ˆ ë‹¨ìœ„ ê¸¸ì´ë¡œ í™˜ì‚°í•˜ì—¬ ë…¸íŠ¸ ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
 Note::Note(int octave, char pitch, char rhythm) {
-	// ¹®ÀÚ Ã³¸®´Â ¼­ºê ÇÔ¼ö¿¡ ¸Ã±è.
+	// ë¬¸ìž ì²˜ë¦¬ëŠ” ì„œë¸Œ í•¨ìˆ˜ì— ë§¡ê¹€.
 
-	// ¿ÁÅ¸ºê ´õÇØ¼­ °ü¸®
+	// ì˜¥íƒ€ë¸Œ ë”í•´ì„œ ê´€ë¦¬
 	oct += octave;
 	
-	// ±æÀÌ 
-	length = rhythmToLength(rhythm) * 300;		//bpm = 200À¸·Î °¡Á¤
+	// ê¸¸ì´ 
+	length = rhythmToLength(rhythm) * 300;		//bpm = 200ìœ¼ë¡œ ê°€ì •
 
-	// ¸¸¾à À½Ç¥¶ó¸é  
+	// ë§Œì•½ ì‰¼í‘œë¼ë©´  
 	if (pitch == '@' || pitch == ',') {
 		freq = 0;
-		is_rest = true;	// À½Ç¥ ¿©ºÎ 
+		is_rest = true;	// ìŒí‘œ ì—¬ë¶€ 
 	}
-	// À½Ç¥°¡ ¾Æ´Ï¶ó Á¤»ó À½Ç¥¶ó¸é
+	// ìŒí‘œê°€ ì•„ë‹ˆë¼ ì •ìƒ ìŒí‘œë¼ë©´
 	else {
-		// ÁÖÆÄ¼ö
+		// ì£¼íŒŒìˆ˜
 		double double_freq = pitchToFreq(pitch);
-		// Á¦°ö°úÁ¤ 
+		// ì œê³±ê³¼ì • 
 		int square = 1;
 		for (int i = 1; i < octave; ++i) {
 			square *= 2;
 		}
 		freq = double_freq * square;
 
-		is_rest = false; // À½Ç¥ ¿©ºÎ 
+		is_rest = false; // ìŒí‘œ ì—¬ë¶€ 
 	}
-	is_NULL = false;	// ´ç¿¬È÷ ³Î³ëÆ® ¾Æ´Ô
+	is_NULL = false;	// ë‹¹ì—°ížˆ ë„ë…¸íŠ¸ ì•„ë‹˜
 	
 	//'0' + a
 	pit[1] = '0' + oct;
 }
 
-// Á¤¼ö·Î »ý¼ºµÉ °æ¿ì ¹Ù·Î ÁÖÆÄ¼ö¿Í ±æÀÌ¿¡ ´ëÀÔÇÑ´Ù.
+// ì •ìˆ˜ë¡œ ìƒì„±ë  ê²½ìš° ë°”ë¡œ ì£¼íŒŒìˆ˜ì™€ ê¸¸ì´ì— ëŒ€ìž…í•œë‹¤.
 Note::Note(int f, int l) {
 	freq = f;
 	length = l;
 
 	is_NULL = false;
-	is_rest = false; // À½Ç¥ ¿©ºÎ Ã¼Å©
+	is_rest = false; // ìŒí‘œ ì—¬ë¶€ ì²´í¬
 }
 
 void Note::beep() {
@@ -54,9 +54,9 @@ void Note::beep() {
 }
 
 
-// pit[0] = °èÀÌ¸§ C~B
-// pit[1] =  ¿ÁÅ¸ºê
-// pit[2] =  ˜Þ ¿©ºÎ
+// pit[0] = ê³„ì´ë¦„ C~B
+// pit[1] =  ì˜¥íƒ€ë¸Œ
+// pit[2] =  # ì—¬ë¶€
 // pit[3] = '\0'
 double Note::pitchToFreq(char pitch) {
 	if (pitch == 'z') { 
@@ -74,7 +74,7 @@ double Note::pitchToFreq(char pitch) {
 	}
 	if (pitch == 'd') {
 		pit[0] = 'D'; 
-		pit[1] = '#';
+		pit[2] = '#';
 		return 38.8909;
 	}
 	if (pitch == 'c') {
@@ -87,7 +87,7 @@ double Note::pitchToFreq(char pitch) {
 	}
 	if (pitch == 'g') { 
 		pit[0] = 'F'; 
-		pit[1] = '#';
+		pit[2] = '#';
 		return 46.2493;
 	}
 	if (pitch == 'b') { 
@@ -96,7 +96,7 @@ double Note::pitchToFreq(char pitch) {
 	}
 	if (pitch == 'h') {  
 		pit[0] = 'G'; 
-		pit[1] = '#';
+		pit[2] = '#';
 		return 51.9130;
 	}
 	if (pitch == 'n') { 
@@ -105,7 +105,7 @@ double Note::pitchToFreq(char pitch) {
 	}
 	if (pitch == 'j') {
 		pit[0] = 'A';
-		pit[1] = '#';
+		pit[2] = '#';
 		return 58.2705;
 	}
 	if (pitch == 'm') { 
@@ -194,7 +194,7 @@ int Note::rhythmToLength(char rhythm) {
 	if (rhythm == 'z') return 8;
 	if (rhythm == 'x') return 4;
 	if (rhythm == 'c') return 2;
-	if (rhythm == 'v') return 1;	// 300¹Ð¸®ÃÊ
+	if (rhythm == 'v') return 1;	// 300ë°€ë¦¬ì´ˆ
 
 	return 0;	// exception!
 }
@@ -202,15 +202,15 @@ int Note::rhythmToLength(char rhythm) {
 
 const char* Note::getPitch() {
 
-	// ³Î³ëÆ®¶ó¸é
+	// ë„ë…¸íŠ¸ë¼ë©´
 	if (is_NULL == true) {
 		return "NUL\0";
 	}
-	// À½Ç¥¶ó¸é 
+	// ìŒí‘œë¼ë©´ 
 	else if (is_rest == true) {
 		return "@\0";
 	}
-	// À½Ç¥°¡ ¾Æ´Ï¶ó¸é
+	// ìŒí‘œê°€ ì•„ë‹ˆë¼ë©´
 	else {
 		return pit;
 	}
@@ -218,11 +218,11 @@ const char* Note::getPitch() {
 
 const char* Note::getLength() {
 
-	// ³Î³ëÆ®¶ó¸é
+	// ë„ë…¸íŠ¸ë¼ë©´
 	if (is_NULL == true) {
 		return "0\0";
 	}
-	// À½Ç¥°¡ ¾Æ´Ï¶ó¸é
+	// ìŒí‘œê°€ ì•„ë‹ˆë¼ë©´
 	else {
 		if (length == 1) {
 			return "1/8\0";
