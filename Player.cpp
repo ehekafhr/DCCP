@@ -1,5 +1,5 @@
 #include "Player.h"
-
+//ë„ë‹´ë¡ ì™”ë‹¤ê°
 void Player::play(int octave, Cursor& cursor, Page& page, Sheet& sheet, Printer& printer) {
 
 	page.ps();
@@ -23,7 +23,7 @@ void Player::play(int octave, Cursor& cursor, Page& page, Sheet& sheet, Printer&
 		}
 	}
 
-	// Àç»ıÀÌ ³¡³ª¸é ¾Çº¸ÀÇ Ã³À½À¸·Î µ¹¾Æ°£´Ù.
+	// ì¬ìƒì´ ëë‚˜ë©´ ì•…ë³´ì˜ ì²˜ìŒìœ¼ë¡œ ëŒì•„ê°„ë‹¤.
 	page.ps();
 	cursor.cs();
 	system("cls");
