@@ -1,13 +1,13 @@
 #include "Printer.h"
 
 void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
-	
-	// Å¸ÀÌÆ²
+	//ë„ë‹´ë¡ ì™”ë‹¤ê°
+	// íƒ€ì´í‹€
 	std::cout << "DCCP: DGIST Convergence Composer Program" << std::endl;
 
 	std::cout << std::endl;
 
-	// À­ÂÊ °æ°è ÁÙ1
+	// ìœ—ìª½ ê²½ê³„ ì¤„1
 	std::cout << std::setw(11) << std::left << "BPM: 200, ";
 	std::cout << std::setw(16) << std::left << "Current Octave: " << std::setw(2) << std::left  << octave;
 	for (int i = 0; i < 90; ++i) {
@@ -17,7 +17,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// Cursor Ä¿¼­ ÁÙ1
+	// Cursor ì»¤ì„œ ì¤„1
 	std::cout << std::setw(8) << std::left << "Cursor";
 	for (int i = 0; i < 24; ++i) {
 		if (i == cursor.getPosition()) {
@@ -32,7 +32,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 
 
-	// Order ¼ø¼­ ÁÙ1
+	// Order ìˆœì„œ ì¤„1
 	std::cout << std::setw(8) << std::left << "Order";
 	for (int i = 0; i < 24; ++i) {
 		std::cout << std::setw(4) << std::left << i;
@@ -41,7 +41,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// Pitch °èÀÌ¸§ ÁÙ1
+	// Pitch ê³„ì´ë¦„ ì¤„1
 	std::cout << std::setw(8) << std::left << "Pitch";
 	for (int i = 0; i < 24; ++i) {
 		std::cout << std::setw(4) << std::left << sheet.getNote(cursor, page).getPitch();
@@ -50,7 +50,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// length ±æÀÌ ÁÙ1
+	// length ê¸¸ì´ ì¤„1
 	std::cout << std::setw(8) << std::left << "Length";
 	for (int i = 0; i < 24; ++i) {
 		std::cout << std::setw(4) << std::left << sheet.getNote(cursor, page).getLength();
@@ -59,7 +59,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// ¾Æ·§ÂÊ °æ°è ÁÙ1
+	// ì•„ë«ìª½ ê²½ê³„ ì¤„1
 	for (int i = 0; i < 119; ++i) {
 		std::cout << '-';
 	}
@@ -68,7 +68,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 
 	
-	// À­ÂÊ °æ°è ÁÙ2
+	// ìœ—ìª½ ê²½ê³„ ì¤„2
 	for (int i = 0; i < 119; ++i) {
 		std::cout << '-';
 	}
@@ -76,7 +76,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// Cursor Ä¿¼­ ÁÙ2
+	// Cursor ì»¤ì„œ ì¤„2
 	std::cout << std::setw(8) << std::left << "Cursor";
 	for (int i = 24; i < 48; ++i) {
 		if (i == cursor.getPosition()) {
@@ -91,7 +91,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 
 
-	// Order ¼ø¼­ ÁÙ2
+	// Order ìˆœì„œ ì¤„2
 	std::cout << std::setw(8) << std::left << "Order";
 	for (int i = 24; i < 48; ++i) {
 		std::cout << std::setw(4) << std::left << i;
@@ -100,7 +100,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// Pitch °èÀÌ¸§ ÁÙ2
+	// Pitch ê³„ì´ë¦„ ì¤„2
 	std::cout << std::setw(8) << std::left << "Pitch";
 	for (int i = 24; i < 48; ++i) {
 		std::cout << std::setw(4) << std::left << sheet.getNote(cursor, page).getPitch();
@@ -109,7 +109,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// length ±æÀÌ ÁÙ2
+	// length ê¸¸ì´ ì¤„2
 	std::cout << std::setw(8) << std::left << "Length";
 	for (int i = 24; i < 48; ++i) {
 		std::cout << std::setw(4) << std::left << sheet.getNote(cursor, page).getLength();
@@ -118,7 +118,7 @@ void Printer::print(int octave, Cursor& cursor, Page& page, Sheet& sheet) {
 	std::cout << std::endl;
 	std::cout << std::endl;
 
-	// ¾Æ·§ÂÊ °æ°è ÁÙ2
+	// ì•„ë«ìª½ ê²½ê³„ ì¤„2
 	for (int i = 0; i < 53; ++i) {
 		std::cout << '-';
 	}
